@@ -4,11 +4,32 @@
 % web:   ruirangerfan.com
 %% Road Damage Detection Based on Unsupervised Disparity Map Segmentation
 
+
+
+% import numpy as np
+% import scipy.io
+% depth = np.load('depth.npy')
+% mydata = dict()
+% mydata['depth'] = depth
+% scipy.io.savemat('depth.mat', {'mydata': mydata})
+
+
+
 clc;
 clear all; 
 close all; 
 
-load('data.mat')
+%load('data.mat')
+
+%load('disparity.mat')
+%disp=M;
+
+%load('depth-subpixel.mat')
+load('depth-extended.mat')
+disp=d = double(mydata.depth);
+
+fprintf('size(disp) is %s - double: %d - uint16: %d\n', mat2str(size(disp)), isa(disp,'double'), isa(disp,'uint16'))
+%quit
 
 %% disparity transformation
 tic;
@@ -85,3 +106,7 @@ ax = subplot(2,1,1); imshow(disp, [],'Colormap',jet(4096));
 title('original disparity map');
 ax = subplot(2,1,2); imshow(disp1,[],'Colormap',jet(4096));
 title('transformed disparity map');
+
+disp ("wait please...");
+pause (50);
+clc;
