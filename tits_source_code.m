@@ -25,7 +25,8 @@ close all;
 %disp=M;
 
 %load('depth-subpixel.mat')
-load('depth-extended.mat')
+%load('depth-extended.mat')
+load('depth-extended-2.mat')
 disp=d = double(mydata.depth);
 
 fprintf('size(disp) is %s - double: %d - uint16: %d\n', mat2str(size(disp)), isa(disp,'double'), isa(disp,'uint16'))
